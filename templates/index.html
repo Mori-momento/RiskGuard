@@ -42,6 +42,7 @@
                     </div>
                 {% endfor %}
             </div>
+            <button type="button" class="predict-button" onclick="fillRandom()">Random Fill</button>
             <button type="submit" class="predict-button">Predict Default Status</button>
         </form>
     </div>
@@ -62,5 +63,17 @@
         {% endif %}
 
     </div>
+<script>
+function fillRandom() {
+    document.getElementById('LTV').value = (Math.random() * 100).toFixed(2);
+    document.getElementById('property_value').value = (Math.random() * 900000 + 100000).toFixed(0);
+    document.getElementById('income').value = (Math.random() * 20000 + 1000).toFixed(0);
+    document.getElementById('Credit_Score').value = (Math.random() * 400 + 400).toFixed(0);
+    document.getElementById('loan_amount').value = (Math.random() * 900000 + 10000).toFixed(0);
+    document.getElementById('age').value = (Math.random() * 55 + 20).toFixed(1);
+    const creditTypeSelect = document.getElementById('credit_type_EQUI');
+    creditTypeSelect.value = Math.random() < 0.5 ? '0' : '1';
+}
+</script>
 </body>
 </html>

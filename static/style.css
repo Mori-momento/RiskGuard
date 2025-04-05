@@ -5,7 +5,6 @@ body {
     background-color: #f8f9fa;
     color: #343a40;
     margin: 0;
-    padding: 20px;
     display: flex;
     justify-content: center;
     align-items: flex-start; /* Align items to the top */
@@ -13,11 +12,12 @@ body {
 }
 
 .container {
+    display: flex;
+    justify-content: space-between;
     background-color: #ffffff;
-    padding: 30px 40px;
     border-radius: 8px;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
-    max-width: 800px; /* Increased max-width */
+    max-width: 1000px;
     width: 100%;
     text-align: center;
 }
@@ -35,7 +35,7 @@ p {
 
 .form-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* Responsive grid */
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
     gap: 20px; /* Increased gap */
     margin-bottom: 30px;
     text-align: left;
@@ -44,6 +44,8 @@ p {
 .form-group {
     display: flex;
     flex-direction: column;
+    padding: 20px;
+    width: 80%;
 }
 
 label {

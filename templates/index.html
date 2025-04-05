@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Loan Default Prediction</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Loan Default Prediction</h1>
+        <p>Enter the applicant's details to predict the likelihood of loan default.</p>
+
+        <form action="{{ url_for('predict') }}" method="post">
+            <div class="form-grid">
+                {% for feature in features %}
+                    <div class="form-group">
+                        <label for="{{ feature }}">
+                            {% if feature == 'LTV' %}Loan-to-Value Ratio (%):
+                            {% elif feature == 'property_value' %}Property Value ($):
+                            {% elif feature == 'credit_type_EQUI' %}Is Credit Type Equifax?:
+                            {% elif feature == 'income' %}Applicant Income ($):
+                            {% elif feature == 'Credit_Score' %}Credit Score:
+                            {% elif feature == 'loan_amount' %}Loan Amount ($):
+                            {% elif feature == 'age' %}Applicant Age (Midpoint):
+                            {% else %}{{ feature.replace('_', ' ').title() }}:
+                            {% endif %}
+                        </label>
+                        {% if feature == 'credit_type_EQUI' %}
+                            <select id="{{ feature }}" name="{{ feature }}" required>
+                                <option value="0" {% if form_values and form_values[feature] == '0' %}selected{% endif %}>No</option>
+                                <option value="1" {% if form_values and form_values[feature] == '1' %}selected{% endif %}>Yes</option>
+                            </select>
+                        {% else %}
+                            <input type="number" step="any" id="{{ feature }}" name="{{ feature }}"
+                                   value="{{ form_values[feature] if form_values else '' }}" required>
+                        {% endif %}
+                        {% if errors and feature in errors %}
+                            <span class="error-message">{{ errors[feature] }}</span>
+                        {% endif %}
+                    </div>
+                {% endfor %}
+            </div>
+            <button type="submit" class="predict-button">Predict Default Status</button>
+        </form>
+
+        {% if error %}
+            <div class="prediction-result error">
+                <h2>Error</h2>
+                <p>{{ error }}</p>
+            </div>
+        {% endif %}
+
+        {% if prediction_text %}
+            <div class="prediction-result">
+                <h2>Prediction Result</h2>
+                <p>Status: <span class="status-{{ 'default' if prediction_text == 'Likely to Default' else 'nodefault' }}">{{ prediction_text }}</span></p>
+                <p>Probability of Default: <span class="probability">{{ prediction_prob }}</span></p>
+            </div>
+        {% endif %}
+
+    </div>
+</body>
+</html>

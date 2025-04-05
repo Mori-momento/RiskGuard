@@ -1,0 +1,138 @@
+/* static/style.css */
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    line-height: 1.6;
+    background-color: #f8f9fa;
+    color: #343a40;
+    margin: 0;
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start; /* Align items to the top */
+    min-height: 100vh;
+}
+
+.container {
+    background-color: #ffffff;
+    padding: 30px 40px;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    max-width: 800px; /* Increased max-width */
+    width: 100%;
+    text-align: center;
+}
+
+h1 {
+    color: #0056b3; /* Darker blue */
+    margin-bottom: 10px;
+    font-weight: 600;
+}
+
+p {
+    color: #6c757d;
+    margin-bottom: 30px;
+}
+
+.form-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* Responsive grid */
+    gap: 20px; /* Increased gap */
+    margin-bottom: 30px;
+    text-align: left;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+}
+
+label {
+    font-weight: 500;
+    margin-bottom: 8px;
+    color: #495057;
+}
+
+input[type="number"],
+select {
+    padding: 12px; /* Increased padding */
+    border: 1px solid #ced4da;
+    border-radius: 6px;
+    font-size: 1rem;
+    transition: border-color 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+}
+
+input[type="number"]:focus,
+select:focus {
+    border-color: #80bdff;
+    outline: 0;
+    box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+}
+
+.predict-button {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 12px 25px;
+    border-radius: 6px;
+    font-size: 1.1rem;
+    cursor: pointer;
+    transition: background-color 0.2s ease-in-out;
+    width: 100%; /* Make button full width */
+    margin-top: 10px; /* Add some space above */
+}
+
+.predict-button:hover {
+    background-color: #0056b3;
+}
+
+.prediction-result {
+    margin-top: 30px;
+    padding: 20px;
+    border-radius: 6px;
+    background-color: #e9ecef;
+    border: 1px solid #dee2e6;
+    text-align: center;
+}
+
+.prediction-result h2 {
+    margin-top: 0;
+    color: #0056b3;
+    font-weight: 600;
+    margin-bottom: 15px;
+}
+
+.prediction-result p {
+    margin-bottom: 10px;
+    font-size: 1.1rem;
+    color: #343a40;
+}
+
+.prediction-result .status-default {
+    color: #dc3545; /* Red for default */
+    font-weight: bold;
+}
+
+.prediction-result .status-nodefault {
+    color: #28a745; /* Green for non-default */
+    font-weight: bold;
+}
+
+.prediction-result .probability {
+    font-weight: bold;
+    color: #17a2b8; /* Teal for probability */
+}
+
+.prediction-result.error {
+    background-color: #f8d7da;
+    border-color: #f5c6cb;
+    color: #721c24;
+}
+.prediction-result.error h2 {
+    color: #721c24;
+}
+
+.error-message {
+    color: #dc3545;
+    font-size: 0.875em;
+    margin-top: 5px;
+}
